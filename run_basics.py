@@ -57,6 +57,6 @@ for i, image_path in enumerate(image_path_list):
     name = image_path.strip().split('/')[-1][:-4]
     # np.savetxt(os.path.join(save_folder, name + '.txt'), kpt) 
     write_obj(os.path.join(save_folder, name + '.obj'), vertices, prn.triangles) #save 3d face(can open with meshlab)
-    depth = get_depth_image(vertices, prn.triangles, h, w)
+    depth_image = get_depth_image(vertices, prn.triangles, h, w, True)
     imsave(os.path.join(save_folder, name + '_depth.jpg'), depth_image)
     # sio.savemat(os.path.join(save_folder, name + '_mesh.mat'), {'vertices': vertices, 'colors': colors, 'triangles': prn.triangles})
