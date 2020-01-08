@@ -4,6 +4,7 @@ from glob import glob
 import scipy.io as sio
 from skimage.io import imread, imsave
 from time import time
+import argparse
 
 from api import PRN
 from utils.write import write_obj
@@ -13,10 +14,14 @@ from utils.render_app import get_depth_image
 os.environ['CUDA_VISIBLE_DEVICES'] = '0' # GPU number, -1 for CPU
 prn = PRN(is_dlib = True) 
 
+parser = argparse.ArgumentParser()
+parser.add_argument('--input')
+parser.add_argument('--output')
+args = parser.parse_args()
 
 # ------------- load data
-image_folder = input('input images path: ')
-save_folder = input('output images path: ')
+image_folder = args.input
+save_folder = args.output
 if not os.path.exists(save_folder):
     os.mkdir(save_folder)
 
