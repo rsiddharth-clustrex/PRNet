@@ -23,15 +23,15 @@ def write_obj(obj_name, vertices, triangles):
         
         # write vertices & colors
         for i in range(vertices.shape[0]):
-            s = 'v {} {} {} \n'.format(vertices[0,i], vertices[1,i], vertices[2,i])
-            # s = 'v {} {} {} \n'.format(vertices[i, 0], vertices[i, 1], vertices[i, 2])
+            # s = 'v {} {} {} \n'.format(vertices[0,i], vertices[1,i], vertices[2,i])
+            s = 'v {} {} {} \n'.format(vertices[i, 0], vertices[i, 1], vertices[i, 2])
             f.write(s)
 
         # write f: ver ind/ uv ind
         [k, ntri] = triangles.shape
         for i in range(triangles.shape[0]):
             # s = 'f {} {} {}\n'.format(triangles[i, 0], triangles[i, 1], triangles[i, 2])
-            s = 'f {}//{} {}//{} {}//{}\n'.format(triangles[i, 2], triangles[i, 2], triangles[i, 1], triangles[i, 1], triangles[i, 0], triangles[i, 0])
+            s = 'f {}//{} {}//{} {}//{}\n'.format(triangles[i, 0], triangles[i, 0], triangles[i, 1], triangles[i, 1], triangles[i, 2], triangles[i, 2])
             f.write(s)
 
 
