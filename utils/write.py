@@ -30,8 +30,8 @@ def write_obj(obj_name, vertices, triangles):
         # write f: ver ind/ uv ind
         [k, ntri] = triangles.shape
         for i in range(triangles.shape[0]):
-            # s = 'f {} {} {}\n'.format(triangles[i, 0], triangles[i, 1], triangles[i, 2])
-            s = 'f {}//{} {}//{} {}//{}\n'.format(triangles[i, 0], triangles[i, 0], triangles[i, 1], triangles[i, 1], triangles[i, 2], triangles[i, 2])
+            s = 'f {} {} {}\n'.format(triangles[i, 0], triangles[i, 1], triangles[i, 2])
+            # s = 'f {}//{} {}//{} {}//{}\n'.format(triangles[i, 0], triangles[i, 0], triangles[i, 1], triangles[i, 1], triangles[i, 2], triangles[i, 2])
             f.write(s)
 
 
