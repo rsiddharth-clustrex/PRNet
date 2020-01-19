@@ -17,13 +17,18 @@ prn = PRN(is_dlib = True)
 parser = argparse.ArgumentParser()
 parser.add_argument('--input')
 parser.add_argument('--output')
+parser.add_argument('--depth2img')
 args = parser.parse_args()
 
 # ------------- load data
 image_folder = args.input
 save_folder = args.output
+depth2img = args.depth2img
 if not os.path.exists(save_folder):
     os.mkdir(save_folder)
+
+if not os.path.exists(depth2img):
+    os.mkdir(depth2img)
 
 types = ('*.jpg', '*.png')
 image_path_list= []
@@ -58,5 +63,5 @@ for i, image_path in enumerate(image_path_list):
     # np.savetxt(os.path.join(save_folder, name + '.txt'), kpt) 
     write_obj(os.path.join(save_folder, name + '.obj'), vertices, prn.triangles) #save 3d face(can open with meshlab)
     depth_image = get_depth_image(vertices, prn.triangles, h, w, True)
-    imsave(os.path.join(save_folder, name + '_depth.jpg'), depth_image)
+    imsave(os.path.join(depth2img, name + '_depth.jpg'), depth_image)
     # sio.savemat(os.path.join(save_folder, name + '_mesh.mat'), {'vertices': vertices, 'colors': colors, 'triangles': prn.triangles})
